@@ -10,6 +10,7 @@ return {
         local config = require('nvim-treesitter.configs')
         config.setup({
             ensure_installed = {
+                'vim',
                 'lua',
                 'javascript',
                 'python',
@@ -48,7 +49,7 @@ return {
                         ['af'] = '@function.outer',
                         ['if'] = '@function.inner',
                         ['ac'] = '@class.outer',
-                        ['ic'] = '@class.inner', 
+                        ['ic'] = '@class.inner',
                     }
                 },
                 move = {
@@ -65,6 +66,5 @@ return {
                 },
             }
         })
-
     end,
 }

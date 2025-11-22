@@ -73,7 +73,7 @@ return {
         -- Set the border color
         vim.api.nvim_set_hl(0, "TelescopeBorder",         { fg = "#00ffff", bg = "none" })
         vim.api.nvim_set_hl(0, "TelescopePromptBorder",   { fg = "#00ffff", bg = "none" })
-        vim.api.nvim_set_hl(0, "TelescopeResultsBorder",  { fg = "#00ffff", bg = "none" })
+        vim.api.nvim_set_hl(0, "TelescopeResultsBorder",  { fg = "#00ffff", bg = "none" }) 
         vim.api.nvim_set_hl(0, "TelescopePreviewBorder",  { fg = "#00ffff", bg = "none" })
     end
 }

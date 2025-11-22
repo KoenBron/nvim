@@ -16,7 +16,8 @@ return {
             -- All language servers we want installed
             ensure_installed = {
                 'lua_ls',
-                'vimls'
+                'vimls',
+                'stylua',
             }
         },
         config = function(_, opts)
@@ -25,6 +26,7 @@ return {
             -- Capabilities, adjust when implement cmp
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             local ok_cmp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+            -- Use cmp capabilities have cmp hook into the LSP
             if ok_cmp then
                 capabilities = cmp_lsp.default_capabilities(capabilities)
             end
