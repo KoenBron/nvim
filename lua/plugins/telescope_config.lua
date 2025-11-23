@@ -1,10 +1,17 @@
 return {
     'nvim-telescope/telescope.nvim', tag = 'v0.1.9',
-    dependencies = { 
+    dependencies = {
         'nvim-lua/plenary.nvim',
         'nvim-tree/nvim-web-devicons', -- for icons
         'nvim-telescope/telescope-ui-select.nvim',
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        {
+          'nvim-telescope/telescope-fzf-native.nvim',
+          build = 'make',
+            config = function()
+                require('telescope').load_extension('fzf')
+            end
+        },
+        'debugloop/telescope-undo.nvim',
     },
     config = function()
         local telescope = require('telescope')
@@ -12,6 +19,10 @@ return {
         local actions = require('telescope.actions')
         local themes = require('telescope.themes')
 
+        telescope.load_extension("fzf")
+        telescope.load_extension("ui-select")
+        telescope.load_extension("undo")
+        
         -- Customization
         telescope.setup({
             defaults = {
@@ -29,22 +40,23 @@ return {
                 -- Transparancy and icons
                 winblend = 5,
                 color_devicons = true,
-            },
 
-
-            -- In menu keymappings
-            mappings = {
-                i = {
-                    ["<C-j>"] = actions.move_selection_next,
-                    ["<C-k>"] = actions.move_selection_previous,
-                    ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-                    ["<Esc>"] = actions.close,
+                -- In menu keymappings
+                mappings = {
+                    i = {
+                        ["<C-j>"] = actions.move_selection_next,
+                        ["<C-k>"] = actions.move_selection_previous,
+                        ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                        ["<Esc>"] = actions.close,
+                    },
+                    n = {
+                        ['q'] = actions.close
+                    }
                 },
-                n = {
-                    ['q'] = actions.close
-                }
             },
-            
+
+
+
             extensions = {
                 -- For fuzzy searching results
                 fzf = {
@@ -61,14 +73,27 @@ return {
 
                     })
                 },
+                undo = {
+                    side_by_side = true,
+                    use_delta = true,
+                    layout_strategy = 'vertical',
+                    previewer = true,
+                    layout_config = {
+                        preview_height = 0.8,
+                    }
+                }
             }
         })
         
         -- Keymappings
         local map = vim.keymap.set
 
+        -- Finding and grepping in files
         map('n', '<leader>ff', builtin.find_files, { desc = '(Telescope) Find files' })
         map('n', '<leader>fw', builtin.live_grep , { desc = '(Telescope) Grep word' })
+
+        -- Undo tree commands
+        map('n', '<leader>u', '<cmd>Telescope undo<CR>', { desc = 'Toggle telescope undotree '})
             
         -- Set the border color
         vim.api.nvim_set_hl(0, "TelescopeBorder",         { fg = "#00ffff", bg = "none" })

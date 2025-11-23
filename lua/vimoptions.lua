@@ -18,3 +18,7 @@ vim.opt.relativenumber = true
 
 vim.opt.signcolumn = "number"
 vim.opt.fillchars:append({ eob = " " })
+
+-- Set undo settings to be persistent
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath('state') .. '/undo'

@@ -16,6 +16,9 @@ return {
         shade_terminals = true,
         shading_factor = -30,
         start_in_insert = true,
+        horizontal_opts = {
+            border = 'rounded',
+        }
     },
     config = function(_, opts)
         -- Apply opts
