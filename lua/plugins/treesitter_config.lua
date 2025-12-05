@@ -14,9 +14,9 @@ return {
                 'lua',
                 'javascript',
                 'python',
+                'dockerfile',
                 'bash',
                 'json',
-                'dockerfile',
             },
             -- Install the parsers
             auto_install = true,
