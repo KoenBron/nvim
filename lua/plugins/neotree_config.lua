@@ -20,7 +20,7 @@ return {
             use_libuv_file_watcher = false,
             filtered_items = {
                 hide_dotfiles = false,
-                hide_git_ignored = false,
+                hide_gitignored = false,
                 hide_hidden = false
             }
         },
