@@ -16,6 +16,7 @@ return {
                 'python',
                 'bash',
                 'json',
+                'dockerfile',
             },
             -- Install the parsers
             auto_install = true,
@@ -30,7 +31,6 @@ return {
             },
 
             disable = {
-                'dockerfile',
             },
 
             -- Select between function blocks
