@@ -42,7 +42,7 @@ return {
 				["<C-e>"] = cmp.mapping.abort(), -- Close menu
 				["<Tab>"] = cmp.mapping.confirm({ select = true }), -- Tab accepts selection
                     
-                -- kkkkjkfdkSelect the next
+                -- Select the next
 				["<C-n>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()

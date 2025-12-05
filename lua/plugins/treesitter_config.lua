@@ -29,6 +29,10 @@ return {
                 enable = true,
             },
 
+            disable = {
+                'dockerfile',
+            },
+
             -- Select between function blocks
             incremental_selection = {
                 enable = true,

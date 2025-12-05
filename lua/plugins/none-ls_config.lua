@@ -6,6 +6,10 @@ return {
     },
     -- None-ls is a fork of null-ls
     config = function()
+        -- -- Add the mason bin to the path so none-ls can find the executables
+        -- local mason_bin = vim.fn.stdpath('data') .. "\\mason\\bin"
+        -- vim.env.PATH = mason_bin .. ';' .. vim.env.PATH
+
         local null_ls = require('null-ls')
         null_ls.setup({
             sources = {
