@@ -17,6 +17,12 @@ return {
                 'dockerfile',
                 'bash',
                 'json',
+                'markdown',
+                'markdown_inline', 
+                'html',
+                'yaml',
+                'latex', 
+                'typst', 
             },
             -- Install the parsers
             auto_install = true,

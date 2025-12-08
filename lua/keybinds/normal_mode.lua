@@ -1,5 +1,8 @@
--- Normal mode
-
+-- -- Diagnostics 
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Diagnostics line" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Diagnostics Loclist" })
 -- -- Movement between windows
 vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap=true })
 vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap=true })

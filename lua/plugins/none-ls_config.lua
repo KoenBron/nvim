@@ -1,6 +1,7 @@
 return {
     -- This plugin nvim treat CLI tools for formatting as language servers, so it can hook into the vim lsp api
     'nvimtools/none-ls.nvim',
+    enabled=false,
     dependencies = {
         'nvim-lua/plenary.nvim',
     },

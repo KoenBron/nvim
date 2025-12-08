@@ -4,6 +4,23 @@ return {
 		"williamboman/mason.nvim",
 		opts = {},
 	},
+    {
+        -- Mason ensure installed for non lspconfigs
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+          dependencies = {
+            "williamboman/mason.nvim",
+          },
+          opts = {
+            ensure_installed = {
+              "stylua",
+              "black",
+              "prettier",
+              "shfmt",
+            },
+            auto_update = false,
+            run_on_start = true,
+          },
+    },
 	{
 		-- Package to not use the default mason installer
 		"williamboman/mason-lspconfig.nvim",
@@ -18,7 +35,6 @@ return {
 				"lua_ls",
 				"ts_ls",
 				"vimls",
-				"stylua",
 				"pyright",
 				"ruff",
 			},
@@ -65,15 +81,7 @@ return {
 				map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
 
 				-- Diagnostics
-				map("n", "[d", vim.diagnostic.goto_prev, "Prev Diagnostic")
-				map("n", "]d", vim.diagnostic.goto_next, "Next Diagnostic")
-				map("n", "<leader>e", vim.diagnostic.open_float, "Diagnostics line")
-				map("n", "<leader>q", vim.diagnostic.setloclist, "Diagnostics Loclist")
 
-				-- Formatting
-				map("n", "<leader>f", function()
-					vim.lsp.buf.format({ async = true })
-				end, "Format the entire file")
 			end -- End of the on_attach function
 			-- Setup the mason_lspconfig
 			mason_lspconfig.setup(opts)
@@ -118,12 +126,14 @@ return {
 					})
 				else
 					vim.lsp.config(server, {
-
 						capabilities = capabilities,
-						on_attach = on_attach,
+						on_attach = function(client, bufnr)
+                            client.server_capabilities.hoverProvider = false
+                            on_attach(client, bufnr)
+                        end
 					})
-					vim.lsp.enable(server)
 				end
+                vim.lsp.enable(server)
 			end -- End for loop
 		end, -- End config function()
 	},
