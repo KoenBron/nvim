@@ -16,6 +16,8 @@ return {
               "black",
               "prettier",
               "shfmt",
+              "yamlls",
+              "dockerls",
             },
             auto_update = false,
             run_on_start = true,
