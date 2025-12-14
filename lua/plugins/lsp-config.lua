@@ -16,8 +16,6 @@ return {
               "black",
               "prettier",
               "shfmt",
-              "yamlls",
-              "dockerls",
             },
             auto_update = false,
             run_on_start = true,
@@ -39,6 +37,8 @@ return {
 				"vimls",
 				"pyright",
 				"ruff",
+                "yamlls",
+                "dockerls",
 			},
 		},
 		config = function(_, opts)
@@ -121,7 +121,7 @@ return {
 					})
 
 					-- Ruff is apparently an LSP now
-				elseif server == "ruff" then
+				elseif server == "ruff_lsp" then
 					vim.lsp.config(server, {
 						capabilities = capabilities,
 						on_attach = on_attach
