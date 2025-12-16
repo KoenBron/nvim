@@ -21,7 +21,6 @@ return {
                 'markdown_inline', 
                 'html',
                 'yaml',
-                'latex', 
                 'typst', 
             },
             -- Install the parsers
