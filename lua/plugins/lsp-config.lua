@@ -114,7 +114,18 @@ return {
 							},
 							python = {
 								analysis = {
-                                    typeCheckingMode = "off",
+                                    ignore = { '*' },
+                                    typeCheckingMode = "basic",
+                                    diagnosticSeverityOverrides = {
+                                        -- "none" means ignore these specific errors
+                                        reportGeneralTypeIssues = "none",      -- Ignores "Argument of type X cannot be assigned to Y"
+                                        reportOptionalMemberAccess = "none",   -- Ignores "Object is None" errors
+                                        reportArgumentType = "none",           -- Ignores type mismatches in arguments
+                                        
+                                        -- Ensure these are still active (optional, usually on by default in basic)
+                                        reportUndefinedVariable = "error", 
+                                        reportAttributeAccessIssue = "error",  -- Catches "Function X does not exist on Object Y"
+                                    },
 								},
 							},
 						},
