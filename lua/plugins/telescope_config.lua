@@ -22,7 +22,7 @@ return {
         telescope.load_extension("fzf")
         telescope.load_extension("ui-select")
         telescope.load_extension("undo")
-        
+
         -- Customization
         telescope.setup({
             defaults = {
@@ -53,6 +53,12 @@ return {
                         ['q'] = actions.close
                     }
                 },
+            },
+
+            pickers = {
+                find_files = {
+                    no_ignore = true
+                }
             },
 
 
