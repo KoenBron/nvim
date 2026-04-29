@@ -16,6 +16,8 @@ return {
               "black",
               "prettier",
               "shfmt",
+              "astro",
+              "ts_ls",
             },
             auto_update = false,
             run_on_start = true,
@@ -40,6 +42,8 @@ return {
                 "yamlls",
                 "dockerls",
 			},
+            auto_update = false,
+            run_on_start = true,
 		},
 		config = function(_, opts)
 			local mason_lspconfig = require("mason-lspconfig")

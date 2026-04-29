@@ -15,7 +15,7 @@ return {
         close_if_last_window = true,
         filesystem = {
             follow_current_file = {
-                enabled = false
+                enabled = true
             },
             use_libuv_file_watcher = false,
             filtered_items = {
